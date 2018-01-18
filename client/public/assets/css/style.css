@@ -1,0 +1,30 @@
+footer{
+	width: 100%;
+    position: fixed;
+    bottom: 0;
+    text-align: center;
+    background: #2780e363;
+    padding: 5px;
+}
+.searchResults{
+	list-style-type: none;
+}
+
+.searchResults li{
+	padding: 10px;
+    border: 1px solid #abcef4;
+}
+.searchResults li:hover{
+    background-color: #cdd4dc;
+}
+
+.searchResults li img{
+	margin: 0px 10px 0px 0px;
+}
+.loading{
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	z-index: 9999;
+	margin: -50px 0px 0px -50px;
+}
