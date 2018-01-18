@@ -1,3 +1,5 @@
+import * as ActionTypes from '../actions/booksActions'
+
 
 export default function reducer(state={
     books: [],
@@ -12,19 +14,19 @@ export default function reducer(state={
   }, action) {
 	const {type,payload} = action;
     switch (type) {
-	  case "HIDE_SUGGESTION":{
+	  case ActionTypes.HIDE_SUGGESTION:{
 		const {showSuggestions} = payload;
 		return {...state,showSuggestions}  
 	  }
-      case "FETCHING_BOOKS": {
+      case ActionTypes.FETCHING_BOOKS: {
 		const {queryText,page,nextPage} = payload;
         return {...state,fetching: true,queryText,page,nextPage}
       }
-	  case "FETCH_BOOKS_ERROR": {
+	  case ActionTypes.FETCH_BOOKS_ERROR: {
 		const {response} = payload;
         return {...state,fetching: false, error: response,showSuggestions: false}
       }
-      case "FETCH_BOOKS_SUCCESS": {
+      case ActionTypes.FETCH_BOOKS_SUCCESS: {
 	    const {books,totalResults,page} = payload;
 		return {
 		  ...state,
@@ -36,7 +38,7 @@ export default function reducer(state={
 		  showSuggestions: (page == 1)?true:false
         }
       }
-	  case "EMPTY_QUERY":{
+	  case ActionTypes.EMPTY_QUERY:{
 		  const {books,queryText} = payload;
 		  return {
 		  ...state,
@@ -48,10 +50,10 @@ export default function reducer(state={
         }
 	  }
 	  
-	  case "FETCHING_BOOK_DETAILS": {
+	  case ActionTypes.FETCHING_BOOK_DETAILS: {
         return {...state,fetching: true,showSuggestions: false,book: null}
       }
-	  case "FETCH_DETAILS_SUCCESS": {
+	  case ActionTypes.FETCH_DETAILS_SUCCESS: {
 		const {book} = payload;
 		return {
 		  ...state,
